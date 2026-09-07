@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <!-- ===================================================== -->
+    <!-- STUDENT LIST VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_student_list" model="ir.ui.view">
+        <field name="name">student.management.student.list</field>
+        <field name="model">student.management.student</field>
+
+        <field name="arch" type="xml">
+            <list>
+                <field name="student_id"/>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="date_of_birth"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- STUDENT FORM VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">student.management.student.form</field>
+        <field name="model">student.management.student</field>
+
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <field name="student_id"/>
+                        <field name="name"/>
+                        <field name="department_id"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                        <field name="date_of_birth"/>
+                        <field name="active"/>
+                    </group>
+
+                    <!-- Student Courses -->
+                    <group string="Courses">
+                        <field name="course_ids"
+                               widget="many2many_tags"
+                               domain="[('department_id', '=', department_id)]"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- STUDENT ACTION -->
+    <!-- ===================================================== -->
+
+    <record id="action_student_management_student"
+            model="ir.actions.act_window">
+
+        <field name="name">Students</field>
+        <field name="res_model">student.management.student</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- MAIN MENU -->
+    <!-- ===================================================== -->
+
+    <menuitem
+        id="menu_student_management_root"
+        name="Student Management"
+        sequence="10"
+    />
+
+
+    <!-- ===================================================== -->
+    <!-- STUDENT MENU -->
+    <!-- ===================================================== -->
+
+    <menuitem
+        id="menu_student_management_student"
+        name="Students"
+        parent="menu_student_management_root"
+        action="action_student_management_student"
+        sequence="10"
+    />
+
+
+    <!-- ===================================================== -->
+    <!-- DEPARTMENT LIST VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_department_list" model="ir.ui.view">
+        <field name="name">student.management.department.list</field>
+        <field name="model">student.management.department</field>
+
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- DEPARTMENT FORM VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_department_form" model="ir.ui.view">
+        <field name="name">student.management.department.form</field>
+        <field name="model">student.management.department</field>
+
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="active"/>
+                        <field name="description"/>
+                    </group>
+
+                    <!-- Department Students -->
+                    <group string="Students">
+                        <field name="student_ids"/>
+                    </group>
+
+                    <!-- Department Courses -->
+                    <group string="Courses">
+                        <field name="course_ids"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- DEPARTMENT ACTION -->
+    <!-- ===================================================== -->
+
+    <record id="action_student_management_department"
+            model="ir.actions.act_window">
+
+        <field name="name">Departments</field>
+        <field name="res_model">student.management.department</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- DEPARTMENT MENU -->
+    <!-- ===================================================== -->
+
+    <menuitem
+        id="menu_student_management_department"
+        name="Departments"
+        parent="menu_student_management_root"
+        action="action_student_management_department"
+        sequence="20"
+    />
+
+
+    <!-- ===================================================== -->
+    <!-- COURSE LIST VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_course_list" model="ir.ui.view">
+        <field name="name">student.management.course.list</field>
+        <field name="model">student.management.course</field>
+
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="credit_hours"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- COURSE FORM VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_course_form" model="ir.ui.view">
+        <field name="name">student.management.course.form</field>
+        <field name="model">student.management.course</field>
+
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="department_id"/>
+                        <field name="credit_hours"/>
+                        <field name="active"/>
+                    </group>
+
+                    <group string="Description">
+                        <field name="description"/>
+                    </group>
+
+                    <!-- Course Students -->
+                    <group string="Students">
+                        <field name="student_ids" nolabel="1"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- COURSE ACTION -->
+    <!-- ===================================================== -->
+
+    <record id="action_student_management_course"
+            model="ir.actions.act_window">
+
+        <field name="name">Courses</field>
+        <field name="res_model">student.management.course</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- COURSE MENU -->
+    <!-- ===================================================== -->
+
+    <menuitem
+        id="menu_student_management_course"
+        name="Courses"
+        parent="menu_student_management_root"
+        action="action_student_management_course"
+        sequence="30"
+    />
+
+
+    <!-- ===================================================== -->
+    <!-- ENROLLMENT LIST VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_enrollment_list" model="ir.ui.view">
+        <field name="name">student.management.enrollment.list</field>
+        <field name="model">student.management.enrollment</field>
+
+        <field name="arch" type="xml">
+            <list>
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="academic_year_id"/>
+                <field name="semester_id"/>
+                <field name="enrollment_date"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- ENROLLMENT FORM VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_enrollment_form" model="ir.ui.view">
+        <field name="name">student.management.enrollment.form</field>
+        <field name="model">student.management.enrollment</field>
+
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group string="Student Information">
+                        <field name="student_id"/>
+                        <field name="department_id"
+                               invisible="1"/>
+
+                        <field name="course_id"
+                               domain="[('department_id', '=', department_id)]"/>
+                    </group>
+
+                    <group string="Academic Information">
+                        <field name="academic_year_id"/>
+                        <field name="semester_id"/>
+                    </group>
+
+                    <group string="Enrollment Information">
+                        <field name="enrollment_date"/>
+                        <field name="status"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- ENROLLMENT ACTION -->
+    <!-- ===================================================== -->
+
+    <record id="action_student_management_enrollment"
+            model="ir.actions.act_window">
+
+        <field name="name">Enrollments</field>
+        <field name="res_model">student.management.enrollment</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- ENROLLMENT MENU -->
+    <!-- ===================================================== -->
+
+    <menuitem
+        id="menu_student_management_enrollment"
+        name="Enrollments"
+        parent="menu_student_management_root"
+        action="action_student_management_enrollment"
+        sequence="40"
+    />
+
+
+    <!-- ===================================================== -->
+    <!-- ACADEMIC YEAR LIST VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_academic_year_list" model="ir.ui.view">
+        <field name="name">student.management.academic.year.list</field>
+        <field name="model">student.management.academic.year</field>
+
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- ACADEMIC YEAR FORM VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_academic_year_form" model="ir.ui.view">
+        <field name="name">student.management.academic.year.form</field>
+        <field name="model">student.management.academic.year</field>
+
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- ACADEMIC YEAR ACTION -->
+    <!-- ===================================================== -->
+
+    <record id="action_student_management_academic_year"
+            model="ir.actions.act_window">
+
+        <field name="name">Academic Years</field>
+        <field name="res_model">student.management.academic.year</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- ACADEMIC YEAR MENU -->
+    <!-- ===================================================== -->
+
+    <menuitem
+        id="menu_student_management_academic_year"
+        name="Academic Years"
+        parent="menu_student_management_root"
+        action="action_student_management_academic_year"
+        sequence="50"
+    />
+
+
+    <!-- ===================================================== -->
+    <!-- SEMESTER LIST VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_semester_list" model="ir.ui.view">
+        <field name="name">student.management.semester.list</field>
+        <field name="model">student.management.semester</field>
+
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- SEMESTER FORM VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_semester_form" model="ir.ui.view">
+        <field name="name">student.management.semester.form</field>
+        <field name="model">student.management.semester</field>
+
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="active"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- SEMESTER ACTION -->
+    <!-- ===================================================== -->
+
+    <record id="action_student_management_semester"
+            model="ir.actions.act_window">
+
+        <field name="name">Semesters</field>
+        <field name="res_model">student.management.semester</field>
+        <field name="view_mode">list,form</field>
+
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- SEMESTER MENU -->
+    <!-- ===================================================== -->
+
+    <menuitem
+        id="menu_student_management_semester"
+        name="Semesters"
+        parent="menu_student_management_root"
+        action="action_student_management_semester"
+        sequence="60"
+    />
+
+</odoo>

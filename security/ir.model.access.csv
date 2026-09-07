@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_management_student,access.student.management.student,model_student_management_student,,1,1,1,1
+access_student_management_department,access.student.management.department,model_student_management_department,,1,1,1,1
+access_student_management_course,access.student.management.course,model_student_management_course,,1,1,1,1
+access_student_management_enrollment,access.student.management.enrollment,model_student_management_enrollment,,1,1,1,1
+access_student_management_academic_year,access.student.management.academic.year,model_student_management_academic_year,,1,1,1,1
+access_student_management_semester,access.student.management.semester,model_student_management_semester,,1,1,1,1
