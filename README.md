@@ -7,8 +7,6 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![License](https://img.shields.io/badge/License-EDUCATIONAL-FF6B6B?style=for-the-badge)](LICENSE)
 
----
-
 ## 🚀 What is this?
 
 The **Student Management System** is a custom Odoo 19 module designed to manage the core academic activities of an educational institution.
@@ -26,257 +24,212 @@ Many educational institutions struggle with:
 
 This module solves these problems by providing a unified academic management system.
 </details>
+🎯 Core workflow
 
----
+                    ┌─────────────────┐
+                    │     Student     │
+                    └────────┬────────┘
+                             │
+              ┌──────────────┴──────────────┐
+              │                             │
+       ┌──────▼──────┐               ┌──────▼──────┐
+       │ Department  │               │   Courses   │
+       └─────────────┘               └──────┬──────┘
+                                            │
+                                    ┌───────▼────────┐
+                                    │   Enrollment    │
+                                    └───────┬────────┘
+                                            │
+                         ┌──────────────────┼──────────────────┐
+                         │                  │                  │
+                  Academic Year         Semester           Status
 
-## 🎯 Core Workflow
+        ✨ Key Features
+| Feature | Description |
+|---|---|
+| 👨‍🎓 **Student Management** | Create and manage student records |
+| 🏫 **Department Management** | Organize students by department |
+| 📚 **Course Management** | Create and manage academic courses |
+| 📅 **Academic Years** | Manage academic-year information |
+| 🗓️ **Semester Management** | Organize courses by semester |
+| 🔗 **Student–Course Relationship** | Many2many relationship between students and courses |
+| 📝 **Enrollment Management** | Register students into courses |
+| 🔄 **Automatic Synchronization** | Enrollment automatically updates student courses |
+| 📊 **Enrollment Status** | Enrolled, Completed, or Dropped |
 
-```mermaid
-graph TD
-    A[Student] --> B[Department]
-    A --> C[Courses]
-    C --> D[Enrollment]
-    D --> E[Academic Year]
-    D --> F[Semester]
-    D --> G[Status]
-    B --> H[Academic Structure]
-    E --> I[Planning]
-    F --> J[Course Offering]
-✨ Key Features
-Feature	Description	Status
-👨‍🎓 Student Management	Create and manage student records	✅
-🏫 Department Management	Organize students by department	✅
-📚 Course Management	Create and manage academic courses	✅
-📅 Academic Years	Manage academic-year information	✅
-🗓️ Semester Management	Organize courses by semester	✅
-🔗 Student-Course Relationship	Many2many relationship between students and courses	✅
-📝 Enrollment Management	Register students into courses	✅
-🔄 Automatic Synchronization	Enrollment automatically updates student courses	✅
-🛡️ Duplicate Prevention	Prevent duplicate enrollment for the same academic period	✅
-📊 Enrollment Status	Enrolled, Completed, or Dropped	✅
-🔥 Highlight Feature — Smart Enrollment Synchronization
-One of the most important parts of this project is the relationship between:
-
-Student ↔ Course ↔ Enrollment
-The system doesn't simply create an enrollment record. It also keeps the Student's course information synchronized with enrollment records.
-
-➕ When an enrollment is created
-
-
-
-🔄 When an enrollment is updated
-
-
-
-
-🗑️ When an enrollment is deleted
-
-
-
-
-
-
-🎯 Result: This prevents the Enrollment model and the Student-Course relationship from becoming inconsistent.
 
 🖥️ Screenshots
+
 Explore the system through the screenshots below.
 
 👨‍🎓 Student Management
-<table> <tr> <td><b>Student List</b></td> <td><b>Student Form</b></td> </tr> <tr> <td><img src="screenshots/student_list.png" alt="Student List" width="400"></td> <td><img src="screenshots/student_form.png" alt="Student Form" width="400"></td> </tr> </table>
+
+![Student List](screenshots/student_list.png)
+
+
+Student Form
+
+![Student List](screenshots/student_form.png)
+
+
 📚 Course Management
-<table> <tr> <td><b>Course List</b></td> <td><b>Course Form</b></td> </tr> <tr> <td><img src="screenshots/course_list.png" alt="Course List" width="400"></td> <td><img src="screenshots/course_form.png" alt="Course Form" width="400"></td> </tr> </table>
+
+![Student List](screenshots/course_list.png)
+
+
+Course Form
+
+![Student List](screenshots/course_form.png)
+
+
 📝 Enrollment Management
-<table> <tr> <td colspan="2"><b>Enrollment Form</b></td> </tr> <tr> <td><img src="screenshots/enrollment_form1.png" alt="Enrollment Form 1" width="400"></td> <td><img src="screenshots/enrollment_form2.png" alt="Enrollment Form 2" width="400"></td> </tr> </table>
-📂 Project Structure
-text
-student_management/
-│
-├── __init__.py
-├── manifest.py
-│
-├── models/
-│   ├── __init__.py
-│   ├── student.py
-│   ├── department.py
-│   ├── course.py
-│   ├── academic_year.py
-│   ├── semester.py
-│   └── enrollment.py
-│
-├── views/
-│   └── student_views.xml
-│
-├── security/
-│   └── ir.model.access.csv
-│
-├── screenshots/
-│   ├── student_list.png
-│   ├── student_form.png
-│   ├── course_list.png
-│   ├── course_form.png
-│   ├── enrollment_list.png
-│   └── enrollment_form.png
-│
-└── README.md
-🛠️ Technology Stack
-Backend
-🐍 Python - Core programming language
 
-🧩 Odoo ORM - Object-Relational Mapping
+![Student List](screenshots/enrollment_list.png)
 
-🟣 Odoo 19 Community Edition - Application Framework
 
-Frontend / UI
-📄 XML - Odoo Views
+Enrollment Form
 
-Database
-🐘 PostgreSQL 17 - Relational database
+## 🛠️ Technologies
 
-Development Tools
-💻 Visual Studio Code - IDE
+| Technology | Purpose |
+|---|---|
+| 🟣 **Odoo 19** | ERP / Application Framework |
+| 🐍 **Python** | Backend Development |
+| 📄 **XML** | Views and UI Configuration |
+| 🐘 **PostgreSQL** | Database |
+| 🔗 **Odoo ORM** | Database and Business Logic |
+| 🔀 **Git** | Version Control |
+| ☁️ **GitHub** | Source Code Management |
 
-🔀 Git - Version control
 
-☁️ GitHub - Repository hosting
+## 🧪 Testing
 
-⚙️ Development Environment
-The project was developed using:
+The Enrollment workflow was thoroughly tested against the following scenarios:
 
-✅ Odoo 19 Community Edition
+### ✅ Test Cases
 
-✅ PostgreSQL 17
+| # | Test Scenario | Status | Description |
+|---|---------------|--------|-------------|
+| 1 | Create enrollment | ✅ Passed | Verify enrollment creation triggers synchronization |
+| 2 | Update student | ✅ Passed | Ensure student changes reflect in enrollments |
+| 3 | Update course | ✅ Passed | Verify course changes sync with enrollments |
+| 4 | Delete enrollment | ✅ Passed | Confirm deletion removes course if no other enrollments |
+| 5 | Synchronize Student-Course relationship | ✅ Passed | Test automatic M2M synchronization |
+| 6 | Prevent duplicate enrollment | ✅ Passed | Verify duplicate enrollment prevention |
+| 7 | Preserve course relationship | ✅ Passed | Confirm course remains when other enrollments exist |
 
-✅ Python 3.10+
+> 🎯 **Testing Focus**: The testing focused particularly on maintaining **data consistency** between related Odoo models, ensuring the **Student ↔ Course ↔ Enrollment** relationship stays synchronized at all times.
+## 📈 What This Project Demonstrates
 
-✅ Windows development environment
+This project demonstrates practical experience with modern Odoo development across multiple domains.
 
-✅ Visual Studio Code
+### 🏗️ **Odoo Development**
 
-✅ Git/GitHub
+| Area | Technologies & Concepts |
+|------|------------------------|
+| **Module Development** | Odoo custom module development |
+| **Backend** | Python backend programming, Odoo ORM |
+| **Frontend** | XML view development |
+| **Database** | Relational database modeling, PostgreSQL |
 
-🧪 Testing
-The Enrollment workflow was tested against the following scenarios:
+### 🔗 **ORM & Relationships**
 
-☑ ✅ Create enrollment
-☑ ✅ Update student
-☑ ✅ Update course
-☑ ✅ Delete enrollment
-☑ ✅ Synchronize Student-Course relationship
-☑ ✅ Prevent duplicate enrollment
-☑ ✅ Preserve course relationship when another enrollment exists
-Focus: The testing focused particularly on maintaining data consistency between related Odoo models.
+| Concept | Implementation |
+|---------|----------------|
+| **Relationships** | Many2one, Many2many relationships, Related fields |
+| **Constraints** | SQL constraints, Data integrity |
+| **CRUD Operations** | create(), write(), unlink() customization |
 
-📈 What This Project Demonstrates
-This project demonstrates practical experience with:
+### 🔧 **Development Workflow**
 
-☑ Odoo custom module development
-☑ Python backend programming
-☑ Odoo ORM
-☑ Many2one relationships
-☑ Many2many relationships
-☑ Related fields
-☑ CRUD operations
-☑ create() customization
-☑ write() customization
-☑ XML view development
-☑ Access control
-☑ Relational database modeling
-☑ Business workflow automation
-🔮 Future Development
-The system can be expanded into a more complete academic ERP solution.
+| Aspect | Skills |
+|--------|--------|
+| **Business Logic** | Business workflow automation |
+| **Security** | Access control, Security rules |
+| **Version Control** | Git and GitHub workflow |
 
-<details> <summary><b>Planned Features</b></summary>
-Priority	Feature
-🔴 High	📊 Student results and grades
-🔴 High	📅 Attendance management
-🟡 Medium	👨‍🏫 Teacher management
-🟡 Medium	📝 Assignment management
-🟡 Medium	📈 Student performance tracking
-🟢 Low	🔔 Notifications
-🟢 Low	🌐 Student portal
-🟢 Low	📊 Academic dashboards
-🟢 Low	📑 Reporting
-🟢 Low	🎓 Academic transcript generation
-</details>
-⚙️ Installation
-1️⃣ Clone the repository
-bash
-git clone https://github.com/Tefe-Ala/student-management-odoo.git
-2️⃣ Copy the module
-Place the student_management folder inside your Odoo custom addons directory:
+## 🔮 Future Development
 
-text
-custom_addons/
-└── student_management/
-3️⃣ Update your Odoo configuration
-Make sure your custom addons directory is included in addons_path:
+The system can be expanded into a more complete academic ERP solution. Here are the planned features for future releases:
 
-Example:
+### 📊 **Academic Management**
 
-ini
-addons_path = addons,custom_addons
-4️⃣ Restart Odoo
-Restart your Odoo server.
+| Priority | Feature | Description | Status |
+|----------|---------|-------------|--------|
+| 🔴 High | 📊 Student results and grades | Record and manage student academic performance | 🟡 Planned |
+| 🔴 High | 📅 Attendance management | Track student attendance per course/session | 🟡 Planned |
+| 🟡 Medium | 👨‍🏫 Teacher management | Manage teacher profiles and assignments | 🟡 Planned |
+| 🟡 Medium | 📝 Assignment management | Create, submit, and grade assignments | 🟡 Planned |
+| 🟡 Medium | 📈 Student performance tracking | Analytics and progress monitoring | 🟡 Planned |
 
-5️⃣ Activate Developer Mode
-In Odoo:
+### 🔔 **Communication & Portal**
 
-text
-Settings → Activate Developer Mode
-6️⃣ Update Apps List
-Go to:
+| Priority | Feature | Description | Status |
+|----------|---------|-------------|--------|
+| 🟢 Low | 🔔 Notifications | Automated alerts for students and teachers | 🟡 Planned |
+| 🟢 Low | 🌐 Student portal | Self-service portal for students | 🟡 Planned |
 
-text
-Apps → Update Apps List
-7️⃣ Install the module
-Search for:
+### 📊 **Analytics & Reporting**
 
-text
-Student Management
-Then click:
+| Priority | Feature | Description | Status |
+|----------|---------|-------------|--------|
+| 🟡 Medium | 📊 Academic dashboards | Real-time academic insights | 🟡 Planned |
+| 🟢 Low | 📑 Reporting | Generate academic reports | 🟡 Planned |
+| 🟢 Low | 🎓 Academic transcript generation | Official student transcripts | 🟡 Planned |
 
-text
-Install
-📂 Git Workflow
-Future updates to this project can be pushed using:
+---
 
-bash
-git add .
-git commit -m "Describe your changes"
-git push
+
+
+
+
+
+
 👨‍💻 About the Project
-This project was developed as a practical demonstration of Odoo technical development, focusing on:
 
-🔧 Custom module creation
-
-📊 Relational data modeling
-
-🧩 ORM programming
-
-🔄 Business workflow automation
+This project was developed as a practical demonstration of Odoo technical development, focusing on custom module creation, relational data modeling, ORM programming, and business workflow automation.
 
 It represents the implementation of an academic management workflow using the Odoo framework rather than relying solely on standard Odoo modules.
 
-⭐ Support the Project
-If you find this project useful or interesting:
+## ⭐ Support the Project
 
-⭐ Star the repository
+If you find this project useful or interesting, here's how you can support it:
 
-🍴 Fork the project
+### 🤝 **Ways to Contribute**
 
-💡 Explore the code
+<div align="center">
 
-📢 Share it with other Odoo developers
+| Action | Why | How |
+|--------|-----|-----|
+| ⭐ **Star** the repository | Show your appreciation | Click the star button at the top |
+| 🍴 **Fork** the project | Build upon it | Click the fork button |
+| 💡 **Explore** the code | Learn from it | Browse the repository |
+| 📢 **Share** with others | Help the community | Share on social media |
+| 🐛 **Report** issues | Make it better | Open a GitHub issue |
+| 💬 **Suggest** features | Shape the roadmap | Start a discussion |
 
-🐛 Report issues
+</div>
 
-💬 Suggest improvements
+---
 
-📄 License
-This project is intended for educational and development purposes.
+### 📈 **Project Status**
 
-🤝 Connect
-https://img.shields.io/badge/GitHub-Tefe--Ala-181717?style=for-the-badge&logo=github
-https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin
+<div align="center">
 
-<div align="center"> <b>Built with ❤️ using Odoo 19</b> </div> ```
+[![GitHub stars](https://img.shields.io/github/stars/Tefe-Ala/student-management-odoo?style=for-the-badge&logo=github)](https://github.com/Tefe-Ala/student-management-odoo/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Tefe-Ala/student-management-odoo?style=for-the-badge&logo=github)](https://github.com/Tefe-Ala/student-management-odoo/network)
+[![GitHub watchers](https://img.shields.io/github/watchers/Tefe-Ala/student-management-odoo?style=for-the-badge&logo=github)](https://github.com/Tefe-Ala/student-management-odoo/watchers)
+
+</div>
+
+---
+
+
+## 📄 License
+
+[![License](https://img.shields.io/badge/License-EDUCATIONAL-blue)](LICENSE)
+
+**This project is intended for educational and development purposes.**
+
+
+<div align="center"> <b>Built with ❤️ using Odoo 19</b> </div>
