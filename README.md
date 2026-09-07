@@ -157,6 +157,10 @@ The Enrollment functionality was tested for:
 ### Enrollment
 
 ![Enrollment Form](screenshots/enrollment_list.png)
+
+### Enrollment Form
+
+![Enrollment Form](screenshots/enrollment_form.png)
 ## 🎯 Future Development
 
 Planned functionality includes:
