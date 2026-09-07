@@ -35,7 +35,6 @@ Student
 * Student enrollment management
 * Automatic synchronization of student courses
 * Enrollment create/update/delete handling
-* Duplicate enrollment prevention
 * Enrollment status management
 
 ### Enrollment Status
@@ -86,35 +85,6 @@ Course removed from Student
 ```
 
 This prevents the Enrollment and Student Course information from becoming inconsistent.
-
-## 🛡️ Duplicate Enrollment Prevention
-
-The system prevents a student from being enrolled in the same course more than once within the same academic year and semester.
-
-The uniqueness rule is:
-
-```text
-Student
-+
-Course
-+
-Academic Year
-+
-Semester
-```
-
-For example:
-
-```text
-Student: Abebe
-Course: Database
-Academic Year: 2025/26
-Semester: Semester I
-```
-
-cannot be registered twice.
-
-However, the same student can take the same course in a different semester or academic year when appropriate.
 
 ## 🛠️ Technologies
 
@@ -167,8 +137,26 @@ The Enrollment functionality was tested for:
 
 ## 📸 Screenshots
 
-Screenshots demonstrating the system interface and functionality will be added here.
+## Screenshots
 
+### Student Management
+
+![Student List](screenshots/student_list.png)
+
+### Student Form
+
+![Student Form](screenshots/student_form.png)
+
+### Course Management
+
+![Course List](screenshots/course_list.png)
+
+### Course Form
+![Course List](screenshots/course_form.png)
+
+### Enrollment
+
+![Enrollment Form](screenshots/enrollment_list.png)
 ## 🎯 Future Development
 
 Planned functionality includes:
